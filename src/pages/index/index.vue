@@ -1,109 +1,112 @@
 <template>
-  <div @click="clickHandle">
+  <div id="main-scroll">
 
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" v-if="userInfo.avatarUrl" :src="userInfo.avatarUrl" background-size="cover" />
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
-
-      <div class="userinfo-nickname">
-        <card :text="userInfo.nickName"></card>
+    <div id="posters">海报</div>
+    <div id="down">
+      <div id="notice">通知</div>
+      <div id="control">
+        <div id="search-device"> 寻找设备 </div>
+        <div id="device-option">
+          <div id="start"> 启动设备</div>
+          <div id="stop"> 关闭设备</div>
+        </div>
       </div>
     </div>
-
-
-
-
   </div>
 </template>
 
 <script>
-import card from '@/components/card'
 
 export default {
-  data () {
+  data() {
     return {
-      motto: 'Hello miniprograme',
-      userInfo: {
-        nickName: 'mpvue',
-        avatarUrl: 'http://mpvue.com/assets/logo.png'
+      imgLink: {
+         
       }
     }
   },
 
   components: {
-    card
+
   },
 
   methods: {
-    bindViewTap () {
-      const url = '../logs/main'
-      if (mpvuePlatform === 'wx') {
-        mpvue.switchTab({ url })
-      } else {
-        mpvue.navigateTo({ url })
-      }
-    },
-    clickHandle (ev) {
-      console.log('clickHandle:', ev)
-      // throw {message: 'custom test'}
-    }
+
   },
 
-  created () {
+  created() {
     // let app = getApp()
   }
 }
 </script>
 
 <style scoped>
-.userinfo {
+#main-scroll {
+  height: 100vh;
+}
+
+#posters {
+  width: 100vw;
+  height: 30vh;
+  background-image: url('../../../static/index/ui14.png');
+}
+
+
+#down {
+  height: 70vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: center;
+  background-color: grey;
 }
 
-.userinfo-avatar {
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+#notice {
+  width: auto;
+  height: 20vh;
+  background-color: chocolate;
+  margin: 20px 30px 20px 30px;
 }
 
-.userinfo-nickname {
-  color: #aaa;
+#control {
+  width: 100vw;
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 10px 20px 30px 20px;
+  box-sizing: border-box;
 }
 
-.usermotto {
-  margin-top: 150px;
+#search-device {
+  height: 18vh;
+  width: 100%;
+  background-color: #3480fd;
+  background-image: -webkit-radial-gradient(50% -200px, circle, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
+  background-image: radial-gradient(circle at 50% -200px, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
 }
 
-.form-control {
-  display: block;
-  padding: 0 12px;
-  margin-bottom: 5px;
-  border: 1px solid #ccc;
-}
-.all{
-  width:7.5rem;
-  height:1rem;
-  background-color:blue;
-}
-.all:after{
-  display:block;
-  content:'';
-  clear:both;
-}
-.left{
-  float:left;
-  width:3rem;
-  height:1rem;
-  background-color:red;
+#device-option {
+  margin-top: 20px;
+  height: 32vh;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
-.right{
-  float:left;
-  width:4.5rem;
-  height:1rem;
-  background-color:green;
+#start {
+  width: 46%;
+  height: 18vh;
+  background-color: #3480fd;
+  background-image: -webkit-radial-gradient(50% -200px, circle, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
+  background-image: radial-gradient(circle at 50% -200px, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
+}
+
+#stop {
+  width: 46%;
+  height: 18vh;
+  background-color: #3480fd;
+  background-image: -webkit-radial-gradient(50% -200px, circle, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
+  background-image: radial-gradient(circle at 50% -200px, #b0e0ff 0, #18a7fd 45%, #3480fd 100%);
 }
 </style>
